@@ -1,180 +1,105 @@
 <!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <title>Auto GoldHen 9.xx (By Original)</title>
-    <link rel="stylesheet" href="Style.css">
+<html><head>
+<title>Auto GoldHen 9.xx (By Original)</title>
+<link rel="stylesheet prefetch" href="Style.css">
     <style>
-        body {
-            background-color: #2F3335;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
+        .info {
             overflow: hidden;
-        }
-
-        #notify {
-            text-align: center;
-            padding: 20px;
-        }
-
-        #log {
-            color: #b8b8b8;
-            font-size: 25px;
-        }
-
-        .main-title {
-            margin-top: 45px;
-            text-align: center;
-            color: #FFD700;
-        }
-
-        /* حاوية العدادات لمنع خطأ undefined */
-        .stats-bar {
-            text-align: center;
-            color: white;
-            font-size: 20px;
-            margin-top: 20px;
-        }
-
-        /* حاوية الثيمات */
-        .themes {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .theme-item {
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .theme-item img {
-            width: 120px;
-            border-radius: 8px;
-            border: 2px solid transparent;
-            transition: 0.3s;
-        }
-
-        .theme-item img:hover {
-            border-color: yellow;
-        }
-
-        .footer {
-            background-color: #032140;
-            color: white;
             position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 18px;
-        }
-    </style>
+            position: absolute;
+            top: 50%;
+            left: 50%;
 
-    <script>
-        // التحقق من الكاش
-        if (window.applicationCache && window.applicationCache.status == '0') {
-            window.location.replace("cache.html");
-        }
-    </script>
+            font-size: 45px;
+            font-family: sans-serif;
+            color: #b8b8b8;
 
-    <script defer src="payload.js"></script>
-    <script defer src="loader.js"></script>
-    <script type="module" src="alert.js"></script>
+            transform: translate(-50%, -50%);
+        }
+
+        .j {
+            font-size: 15px;
+            color: #2F3335;
+        }
+</style>
+<script>
+    if (window.applicationCache.status=='0')
+    {
+        window.location.replace("cache.html");
+    }
+</script>
+<script defer src="payload.js"></script>
+<script defer src="loader.js"></script>
+<script type=module src="alert.js"></script>
 </head>
+<body onload=load_exploit()>
+<div id="jb-progress">
+    <div id="notify"  style="display:;">
+        <img src="hen.png" alt="" width="100px" height="100px">
+        <p id="log"></p>
+    </div>	
 
-<body onload="if(typeof load_exploit === 'function') { load_exploit(); }">
+<br><br><br><br><br><br>
+<h1 id="msgs" style="margin-top:45px;color:#FFD700">Auto GoldHen 9.xx (By Original)</h1>
+<h1 id=msgs2 style='font-size:25px;text-align:center;color:#FFD700;'>∆❍X❑</h1>
+<br>
+<br><br>
+<br><br><br>
+ <div style="background-color:#032140;color:white;position:fixed;left:0;bottom:-0px;width:100%;text-align:center;">
+	<font style='color:#87FF33'>Modder & Dev : </font><a href="" style='font-size:20px;text-align:center;color:yellow;'>Ahmed Abdelsalam & Hamada Ali</a>
+	<br>
+	<font style='color:#87FF33'>Phone : </font>*   01017096872  &  01115550903*<br>
 
-    <div id="jb-progress">
-        <div id="notify">
-            <img src="hen.png" alt="GoldHen" width="100" height="100">
-            <p id="log">جاري التحميل...</p>
-        </div>
-    </div>
+</div>
+<script>
+UA=navigator.userAgent.substring(navigator.userAgent.indexOf("6.72 (") + 28,navigator.userAgent.indexOf(") Apple"));
+if (UA=="layStation 4/9.00")UA="9.00";
+if (UA=="layStation 4/9.03")UA="9.03";
+if (UA=="layStation 4/9.04")UA="9.04";
+if (UA=="layStation 4/9.50")UA="9.50";
+if (UA=="layStation 4/9.51")UA="9.51";
+if (UA=="layStation 4/9.60")UA="9.60";
+if (UA=="layStation 4/99.99")UA="99.99";
+if (UA!="9.00" && UA!="9.03" && UA!="9.04" && UA!="9.50" && UA!="9.51" && UA!="9.60" && UA!="99.99")alert("This Is For PS4 FW9.xx Only!");
+PS4fw.innerHTML=""+UA+"";
+</script>
 
-    <h1 class="main-title">Auto GoldHen 9.xx (By Original)</h1>
-    
-    <h2 id="PS4fw" style="text-align:center; color:#FFD700; font-size:25px;">...</h2>
-
-    <div class="stats-bar">
-        <span>النجاح: <b id="passCounter">0</b></span> 
-        &nbsp; | &nbsp; 
-        <span>الفشل: <b id="failCounter">0</b></span>
-    </div>
-
-    <div class="themes" id="themesContainer"></div>
-
-    <div class="footer">
-        <span style="color:#87FF33">Modder & Dev:</span> 
-        <span style="color:yellow;">Ahmed Abdelsalam & Hamada Ali</span>
-        <br>
-        <span style="color:#87FF33">Phone:</span> 01017096872 & 01115550903
-    </div>
-
+<script type="text/javascript">
+ if(localStorage.getItem("theme")==null){
+   localStorage.setItem("theme","2.jpg")
+ }
+ document.body.style.background = "url('"+localStorage.getItem("theme")+"')"
+ document.body.style.backgroundSize = "cover"
+ var imgs = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
+ render()
+ function render(){
+     document.querySelector(".themes").innerHTML=""
+	 for(let i=0;i<imgs.length;i++){
+	    var selectText = "Select"
+	    var textColor = "white"
+	    if(localStorage.theme==imgs[i]){
+	      selectText="Selected"
+	      textColor="green"
+	    }
+	 	document.querySelector(".themes").innerHTML+='<div class="theme" ><img src="'+imgs[i]+'" ><span style="color:'+textColor+';" onclick="set('+i+')">'+selectText+'</span></div>';
+	 }
+ }
+ function set(i){
+    localStorage.setItem("theme",imgs[i])
+    render()
+ 	document.body.style.background = "url('"+imgs[i]+"')"
+ 	document.body.style.backgroundSize = "cover"
+ }
+</script>
     <script>
-        // 1. تحديث رقم الإصدار بشكل آمن
-        var userAgent = navigator.userAgent;
-        var fw = "Unknown";
-        if (userAgent.indexOf("6.72 (") !== -1) {
-            fw = userAgent.substring(userAgent.indexOf("6.72 (") + 28, userAgent.indexOf(") Apple"));
+        if (localStorage.passcount == null || localStorage.passcount == undefined) localStorage.passcount = 0;
+        if (localStorage.passCounter == null || localStorage.passCounter == undefined) {
+          passCounter.innerHTML = localStorage.passcount;
         }
-        if (fw.indexOf("9.00") !== -1) fw = "9.00";
-        
-        var fwElement = document.getElementById("PS4fw");
-        if (fwElement) fwElement.innerHTML = "Firmware: " + fw;
-
-        // 2. إدارة العدادات وتجنب خطأ undefined
-        function updateCounters() {
-            if (localStorage.passcount == null) localStorage.passcount = 0;
-            if (localStorage.failcount == null) localStorage.failcount = 0;
-
-            var pElem = document.getElementById("passCounter");
-            var fElem = document.getElementById("failCounter");
-
-            if (pElem) pElem.innerText = localStorage.passcount;
-            if (fElem) fElem.innerText = localStorage.failcount;
+        if (localStorage.failcount == null || localStorage.failcount == undefined) localStorage.failcount = 0;
+        if (localStorage.failCounter == null || localStorage.failCounter == undefined) {
+          failCounter.innerHTML = localStorage.failcount;
         }
-        updateCounters();
-
-        // 3. نظام الثيمات (الخلفيات)
-        var images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
-        
-        function initTheme() {
-            var savedTheme = localStorage.getItem("theme") || "2.jpg";
-            document.body.style.backgroundImage = "url('" + savedTheme + "')";
-            renderThemes();
-        }
-
-        function renderThemes() {
-            var container = document.getElementById("themesContainer");
-            if (!container) return;
-            
-            container.innerHTML = "";
-            images.forEach(function(imgName) {
-                var isSelected = (localStorage.getItem("theme") === imgName);
-                var item = document.createElement("div");
-                item.className = "theme-item";
-                item.innerHTML = '<img src="' + imgName + '" onclick="setTheme(\'' + imgName + '\')">' +
-                                 '<div style="color:' + (isSelected ? 'green' : 'white') + '">' + 
-                                 (isSelected ? 'Selected' : 'Select') + '</div>';
-                container.appendChild(item);
-            });
-        }
-
-        function setTheme(imgName) {
-            localStorage.setItem("theme", imgName);
-            document.body.style.backgroundImage = "url('" + imgName + "')";
-            renderThemes();
-        }
-
-        initTheme();
     </script>
 </body>
 </html>
